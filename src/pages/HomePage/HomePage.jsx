@@ -1,8 +1,9 @@
 
+import Hero from './Hero/Hero';
 const HomePage = () => {
     return (
         <div>
-            Home Page
+            <Hero/>
         </div>
 );
 };

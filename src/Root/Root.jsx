@@ -1,10 +1,10 @@
 import { Outlet } from "react-router";
 const Root = () => {
-    return (
-        <div>
-            <Outlet/>
-        </div>
-    );
+  return (
+    <div className="container mx-auto px-4">
+      <Outlet />
+    </div>
+  );
 };
 
 export default Root;
