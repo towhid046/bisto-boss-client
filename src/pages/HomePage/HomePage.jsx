@@ -1,11 +1,12 @@
-
-import Hero from './Hero/Hero';
+import Hero from "./Hero/Hero";
+import ItemList from "./ItemList/ItemList";
 const HomePage = () => {
-    return (
-        <div>
-            <Hero/>
-        </div>
-);
+  return (
+    <div>
+      <Hero />
+      <ItemList />
+    </div>
+  );
 };
 
 export default HomePage;

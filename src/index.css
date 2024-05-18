@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* nave bar menu custom style */
+.main-manu li ul{
+    opacity: 0;
+    visibility: hidden;
+}
+.main-manu li:hover ul{
+    opacity: 1;
+    visibility: visible;
+    top: 144%;
+}
