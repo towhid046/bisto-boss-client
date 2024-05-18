@@ -2,25 +2,30 @@ import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
-
+import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const links = (
     <>
       <li>
-        <a>Item 1</a>
+        <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <a>Item 2</a>
+        <NavLink to={"/our-menu"}>Our Menu</NavLink>
       </li>
-
       <li>
-        <a>Item 3</a>
+        <NavLink to={"/dashboard"}>Dashboard</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/contact-us"}>Contact us</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/our-shop"}>Our Shop</NavLink>
       </li>
     </>
   );
 
   return (
-    <nav className="  text-white opacity-60 bg-neutral w-[93%] fixed z-10 ">
+    <nav className="  text-white uppercase sticky top-0 z-50 bg-neutral">
       <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
@@ -63,7 +68,7 @@ const Navbar = () => {
           <div className="flex items-center gap-2">
             <button className="font-bold">Log Out</button>
             <Link>
-            <CgProfile className="text-2xl"/>
+              <CgProfile className="text-2xl" />
             </Link>
           </div>
         </div>

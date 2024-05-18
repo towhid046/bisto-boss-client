@@ -11,3 +11,7 @@
     visibility: visible;
     top: 144%;
 }
+
+.menu > li .active{
+    color: rgb(202, 202, 52) !important;
+}
