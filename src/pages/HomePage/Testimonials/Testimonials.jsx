@@ -26,7 +26,7 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <section className="mb-16">
+    <section className="mb-20">
       <SectionHeader title="what our clients say" heading="TEstimonials" />
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         {reviews.map((review) => (
