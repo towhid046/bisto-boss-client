@@ -15,7 +15,7 @@ const PageBanner = ({
           <h1 className="uppercase font-bold lg:text-5xl md:text-4xl text-3xl">
             {title}
           </h1>
-          <p className="uppercase mt-3 text-lg">{subTitle}</p>
+          <p className="mt-3 text-lg">{subTitle}</p>
         </div>
       </div>
     </section>
