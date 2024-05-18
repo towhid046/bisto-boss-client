@@ -6,7 +6,9 @@ const SectionHeader = ({
   return (
     <header className="my-10 max-w-xs mx-auto text-center">
       <p className="text-lg italic text-yellow-600  mb-3">---{title}---</p>
-      <h2 className="font-semibold text-3xl border-y-2 py-3 uppercase">{heading}</h2>
+      <h2 className="font-semibold text-3xl border-y-2 py-3 uppercase">
+        {heading}
+      </h2>
     </header>
   );
 };
