@@ -35,7 +35,7 @@ const MenuSection = () => {
         <button className="border-b-2 py-4 px-6 rounded-xl transition hover:bg-black hover:text-base-200 border-neutral duration-500 ease-in-out"> View Full Menu</button>
       </div>
       <div className="bg-black mt-20">
-        <h2 className="text-center py-14 text-base-100 text-3xl font-bold">Call Us: +88 01923908787</h2>
+        <h2 className="text-center uppercase py-14 text-base-100 text-3xl font-bold">Call Us: +88 01923908787</h2>
       </div>
     </section>
   );

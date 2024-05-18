@@ -3,6 +3,8 @@ import ItemList from "./ItemList/ItemList";
 import SinglePoster from "./SinglePoster/SinglePoster";
 import MenuSection from "./MenuSection/MenuSection";
 import RecommendsSection from "./RecommendsSection/RecommendsSection";
+import FromOurMenu from "./FromOurMenu/FromOurMenu";
+import Testimonials from "./Testimonials/Testimonials";
 const HomePage = () => {
   return (
     <div>
@@ -11,6 +13,8 @@ const HomePage = () => {
       <SinglePoster />
       <MenuSection />
       <RecommendsSection />
+      <FromOurMenu />
+      <Testimonials />
     </div>
   );
 };

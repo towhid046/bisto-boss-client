@@ -3,7 +3,7 @@ const SinglePoster = () => {
   return (
     <div
       style={{ backgroundImage: `url(${bgImg})` }}
-      className={`bg-cover bg-center bg-no-repeat mb-10`}
+      className={`bg-cover bg-center bg-no-repeat mb-10 bg-fixed`}
     >
       <div className="md:p-20 p-10 ">
         <div className="bg-base-100 md:py-16 px-10 py-10 max-w-4xl mx-auto text-center">
