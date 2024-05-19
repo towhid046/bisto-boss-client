@@ -18,7 +18,7 @@ const Testimonials = () => {
 
   useEffect(() => {
     const loadData = async () => {
-      const res = await fetch("reviews.json");
+      const res = await fetch(`${import.meta.env.VITE_URL}/reviews`);
       const data = await res.json();
       setReviews(data);
     };
