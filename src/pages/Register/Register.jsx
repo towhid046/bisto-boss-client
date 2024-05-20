@@ -3,22 +3,36 @@ import { useContext, useEffect, useState } from "react";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import scrollOnMount from "./../../utilities/scrollOnMount";
 import regImg from "../../assets/login/login.svg";
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
+  const { createUser } = useAuth();
+
   useEffect(() => {
     scrollOnMount();
   }, []);
+
+  const handleRegisterForm = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    try {
+      const res = await createUser(email, password);
+      console.log(res.user);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   return (
     <div>
       <div className="hero md:min-h-screen container-fluid my-16">
         <div className="w-full flex shadow-2xl lg:flex-row justify-between gap-8 items-center flex-col md:p-12 py-8 px-6">
           <div className="flex-1 bg-base-100 mx-auto w-full">
-            <h1 className="text-2xl font-bold text-center mb-8">
-                Sign Up
-            </h1>
+            <h1 className="text-2xl font-bold text-center mb-8">Sign Up</h1>
             <hr />
-            <form className="mt-5">
+            <form onSubmit={handleRegisterForm} className="mt-5">
               <div>
                 <label className="label">
                   <strong className="label-text">Your Name</strong>
@@ -94,7 +108,7 @@ const Register = () => {
                   className="checkbox checkbox-sm rounded"
                   required
                 />
-                <label htmlFor="terms-contition" className="cursor-pointer">
+                <label htmlFor="terms-condition" className="cursor-pointer">
                   <span>Accept Term & Conditions</span>
                 </label>
               </div>

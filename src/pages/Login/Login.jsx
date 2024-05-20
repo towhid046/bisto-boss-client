@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, } from "react";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import scrollOnMount from "./../../utilities/scrollOnMount";
 import loginImg from "../../assets/login/login.svg";
@@ -12,6 +12,8 @@ import {
 } from "react-simple-captcha";
 
 const Login = () => {
+
+
   useEffect(() => {
     scrollOnMount();
     loadCaptchaEnginge(6);

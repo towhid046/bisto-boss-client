@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 const Navbar = () => {
+  const { user, logOutUser } = useAuth();
+
   const links = (
     <>
       <li>
@@ -23,6 +26,15 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  const handleLogOutUser = async () => {
+    try {
+      await logOutUser();
+      alert("Logout success");
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   return (
     <nav className="  text-white uppercase sticky top-0 z-50 bg-neutral">
@@ -65,9 +77,14 @@ const Navbar = () => {
               <FaCartPlus className="text-xl" />
             </Link>
           </div>
-          <div className="flex items-center">
-            {/* <button className="font-bold">Log Out</button> */}
-            <Link to={'/login'}>
+          <div className="flex items-center gap-2">
+            {user && (
+              <button onClick={handleLogOutUser} className="font-bold">
+                Log Out
+              </button>
+            )}
+
+            <Link to={"/login"}>
               <CgProfile className="text-2xl" />
             </Link>
           </div>
