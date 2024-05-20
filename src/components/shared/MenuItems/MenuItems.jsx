@@ -20,7 +20,7 @@ const MenuItems = ({ menuCategory }) => {
       }
     };
     loadData();
-  }, []);
+  }, [menuCategory]);
 
   const menuList = menus.map((menu) => (
     <li key={menu._id} className="flex items-start gap-4">
@@ -44,7 +44,7 @@ const MenuItems = ({ menuCategory }) => {
       </div>
     );
   }
-  
+
   if (error) {
     return (
       <h2 className="text-center text-3xl text-gray-300 italic">{error}</h2>

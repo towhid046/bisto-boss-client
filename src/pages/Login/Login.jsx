@@ -23,6 +23,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
     scrollOnMount();
@@ -39,7 +40,7 @@ const Login = () => {
     if (validateCaptcha(userCaptcha) === true) {
       await loginUser(email, password);
       toast.success("Login Success");
-    navigate(`${location.state ? location.state : "/"}`);
+      navigate(from);
       return;
     } else {
       toast.error("Captcha do not match");

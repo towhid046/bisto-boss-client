@@ -62,7 +62,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm gap-2 dropdown-content mt-3 bg-neutral  z-[1] p-2 shadow text-base-100 rounded-box w-52"
             >
               {links}
             </ul>
@@ -75,21 +75,26 @@ const Navbar = () => {
           <div className="hidden lg:flex ">
             <ul className="menu menu-horizontal px-1">{links}</ul>
           </div>
-          <div>
+          <div className="relative">
             <Link to={"/cart"}>
               <FaCartPlus className="text-xl" />
+              <span className="badge badge-primary absolute -top-3 left-3">0</span>
             </Link>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             {user && (
               <button onClick={handleLogOutUser} className="font-bold">
                 Log Out
               </button>
             )}
 
-            <Link to={"/login"}>
-              <CgProfile className="text-2xl" />
-            </Link>
+            {user ? (
+              <img className="w-10 h-10 rounded-full cursor-pointer" title={user.displayName} src={user.photoURL} alt="User" />
+            ) : (
+              <Link to={"/login"} className="ml-1">
+                <CgProfile className="text-3xl" />
+              </Link>
+            )}
           </div>
         </div>
       </div>

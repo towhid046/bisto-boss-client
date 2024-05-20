@@ -7,7 +7,7 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 
 const Register = () => {
-  const { createUser } = useAuth();
+  const { createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,10 +19,13 @@ const Register = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    const userName = form.name.value;
+    const photoUrl = form.photoUrl.value;
     try {
       await createUser(email, password);
       toast.success("Registration Success");
       navigate("/");
+      await updateUserProfile(userName, photoUrl);
     } catch (error) {
       toast.error(error.message);
     }
@@ -54,7 +57,7 @@ const Register = () => {
                 </label>
                 <input
                   type="text"
-                  name="imgurl"
+                  name="photoUrl"
                   placeholder="Enter your photo url"
                   className="focus:outline-none input w-full rounded-lg outline-none bg-[#f3f3f3]"
                   required
