@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { useEffect, } from "react";
+import { useEffect } from "react";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import scrollOnMount from "./../../utilities/scrollOnMount";
 import loginImg from "../../assets/login/login.svg";
+import useAuth from "./../../hooks/useAuth";
 
 import {
   loadCaptchaEnginge,
@@ -12,14 +13,14 @@ import {
 } from "react-simple-captcha";
 
 const Login = () => {
-
+  const { loginUser } = useAuth();
 
   useEffect(() => {
     scrollOnMount();
     loadCaptchaEnginge(6);
   }, []);
 
-  const handleLoginForm = (e) => {
+  const handleLoginForm = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -27,7 +28,7 @@ const Login = () => {
     const userCaptcha = form.captcha.value;
 
     if (validateCaptcha(userCaptcha) === true) {
-      alert("Captcha Matched");
+      await loginUser(email, password);
       return;
     } else {
       alert("Captcha do not match");
