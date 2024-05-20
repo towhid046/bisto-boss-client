@@ -1,21 +1,28 @@
-import { Link, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { useEffect } from "react";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import scrollOnMount from "./../../utilities/scrollOnMount";
 import loginImg from "../../assets/login/login.svg";
 import useAuth from "./../../hooks/useAuth";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 import {
   loadCaptchaEnginge,
-  LoadCanvasTemplate,
+  // LoadCanvasTemplate,
   LoadCanvasTemplateNoReload,
   validateCaptcha,
 } from "react-simple-captcha";
 
 const Login = () => {
   const { loginUser } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  const location = useLocation();
 
   useEffect(() => {
     scrollOnMount();
@@ -31,11 +38,11 @@ const Login = () => {
 
     if (validateCaptcha(userCaptcha) === true) {
       await loginUser(email, password);
-      toast.success('Login Success')
-      navigate('/')
+      toast.success("Login Success");
+    navigate(`${location.state ? location.state : "/"}`);
       return;
     } else {
-      alert("Captcha do not match");
+      toast.error("Captcha do not match");
     }
   };
 

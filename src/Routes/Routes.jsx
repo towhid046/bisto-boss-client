@@ -3,8 +3,10 @@ import Root from "../Root/Root";
 import HomePage from "./../pages/HomePage/HomePage";
 import MenuPage from "./../pages/MenuPage/MenuPage";
 import OurShopPage from "../pages/OurShopPage/OurShopPage";
-import Register from './../pages/Register/Register';
-import Login from './../pages/Login/Login';
+import Register from "./../pages/Register/Register";
+import Login from "./../pages/Login/Login";
+import Cart from "./../pages/Cart/Cart";
+import PrivateRoutes from "./PrivateRoutes";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +32,14 @@ const routes = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/cart",
+        element: (
+          <PrivateRoutes>
+            <Cart />
+          </PrivateRoutes>
+        ),
       },
     ],
   },

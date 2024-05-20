@@ -76,7 +76,7 @@ const Navbar = () => {
             <ul className="menu menu-horizontal px-1">{links}</ul>
           </div>
           <div>
-            <Link>
+            <Link to={"/cart"}>
               <FaCartPlus className="text-xl" />
             </Link>
           </div>
