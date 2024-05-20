@@ -1,26 +1,45 @@
 import PropTypes from "prop-types";
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-} from "@tanstack/react-query";
+
 import useAuth from "../../../hooks/useAuth";
 import swal from "sweetalert";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { toast } from "react-toastify";
+import useCart from "../../../hooks/useCart";
 
 const MenuListCard = ({ menu }) => {
+  const { name, recipe, price, image, _id } = menu;
   const { user } = useAuth();
-  const { name, recipe, price, image } = menu;
-  const queryClient = useQueryClient();
   const navigate = useNavigate();
-  // Queries
-  const query = useQuery({ queryKey: ["todos"], queryFn: () => {} });
+  const location = useLocation();
 
-  const handleAddToCart = (item) => {
+  const { refetch } = useCart();
+
+  const axiosSecure = useAxiosSecure();
+
+  const handleAddToCart = async (item) => {
     if (user && user.email) {
-      // TODO: sent card data to DB
-      console.log(item, user?.email);
+      const newItem = {};
+      newItem.user_email = user?.email;
+      newItem.name = item.name;
+      newItem.recipe = item.recipe;
+      newItem.image = item.image;
+      newItem.current_id = item._id;
+      newItem.category = item.category;
+      newItem.price = item.price;
+
+      try {
+        const res = await axiosSecure.post("/carts", { newItem });
+        console.log(res.data);
+        toast.success(`${item.name} is added to cart`, {
+          position: 'top-center',
+          autoClose: 2000,
+        });
+        refetch();
+      } catch (error) {
+        console.error(error.message);
+        toast.error(`${error.message}`);
+      }
     } else {
       swal({
         title: "You are not Logged In",
@@ -29,7 +48,7 @@ const MenuListCard = ({ menu }) => {
         buttons: true,
       }).then((willDelete) => {
         if (willDelete) {
-          navigate("/login");
+          navigate("/login", { state: { from: location } });
         }
       });
     }
@@ -51,7 +70,7 @@ const MenuListCard = ({ menu }) => {
             onClick={() => handleAddToCart(menu)}
             className="btn border-b-2 border-b-yellow-600 uppercase text-yellow-600 hover:bg-neutral"
           >
-            Add to cart
+            Add to Cart
           </button>
         </div>
       </div>

@@ -5,9 +5,12 @@ import { CgProfile } from "react-icons/cg";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
+import useCart from "./../../hooks/useCart";
+
 const Navbar = () => {
-  const { user, logOutUser } = useAuth();
+  const { user, logOutUser, } = useAuth();
   const navigate = useNavigate();
+  const {carts} = useCart();
 
   const links = (
     <>
@@ -38,6 +41,7 @@ const Navbar = () => {
       console.error(error.message);
     }
   };
+
 
   return (
     <nav className="  text-white uppercase sticky top-0 z-50 bg-neutral">
@@ -78,7 +82,9 @@ const Navbar = () => {
           <div className="relative">
             <Link to={"/cart"}>
               <FaCartPlus className="text-xl" />
-              <span className="badge badge-primary absolute -top-3 left-3">0</span>
+              <span className="badge badge-primary absolute -top-3 left-3">
+                {carts.length}
+              </span>
             </Link>
           </div>
           <div className="flex items-center gap-3">
@@ -89,7 +95,12 @@ const Navbar = () => {
             )}
 
             {user ? (
-              <img className="w-10 h-10 rounded-full cursor-pointer" title={user.displayName} src={user.photoURL} alt="User" />
+              <img
+                className="w-10 h-10 rounded-full cursor-pointer"
+                title={user.displayName}
+                src={user.photoURL}
+                alt="User"
+              />
             ) : (
               <Link to={"/login"} className="ml-1">
                 <CgProfile className="text-3xl" />
