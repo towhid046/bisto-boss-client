@@ -3,6 +3,8 @@ import Root from "../Root/Root";
 import HomePage from "./../pages/HomePage/HomePage";
 import MenuPage from "./../pages/MenuPage/MenuPage";
 import OurShopPage from "../pages/OurShopPage/OurShopPage";
+import Register from './../pages/Register/Register';
+import Login from './../pages/Login/Login';
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -20,6 +22,14 @@ const routes = createBrowserRouter([
       {
         path: "/our-shop",
         element: <OurShopPage />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

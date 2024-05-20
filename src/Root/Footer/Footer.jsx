@@ -28,7 +28,7 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <div className="bg-[#151515] text-center py-4 col-span-2">
+      <div className="bg-[#151515] text-center py-4 lg:col-span-2">
         <p>Copyright &copy; CulinaryCloud. All rights reserved.</p>
       </div>
     </footer>

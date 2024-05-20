@@ -56,7 +56,7 @@ const Navbar = () => {
             <img className="max-w-44" src={logo} alt="Logo" />
           </Link>
         </div>
-        <div className="navbar-end space-x-4">
+        <div className="navbar-end space-x-7">
           <div className="hidden lg:flex ">
             <ul className="menu menu-horizontal px-1">{links}</ul>
           </div>
@@ -65,9 +65,9 @@ const Navbar = () => {
               <FaCartPlus className="text-xl" />
             </Link>
           </div>
-          <div className="flex items-center gap-2">
-            <button className="font-bold">Log Out</button>
-            <Link>
+          <div className="flex items-center">
+            {/* <button className="font-bold">Log Out</button> */}
+            <Link to={'/login'}>
               <CgProfile className="text-2xl" />
             </Link>
           </div>

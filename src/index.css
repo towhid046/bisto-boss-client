@@ -14,4 +14,5 @@
 
 .menu > li .active{
     color: rgb(202, 202, 52) !important;
+    font-weight: 600;
 }
