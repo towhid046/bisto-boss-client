@@ -4,10 +4,33 @@ import { LuEye, LuEyeOff } from "react-icons/lu";
 import scrollOnMount from "./../../utilities/scrollOnMount";
 import loginImg from "../../assets/login/login.svg";
 
+import {
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  LoadCanvasTemplateNoReload,
+  validateCaptcha,
+} from "react-simple-captcha";
+
 const Login = () => {
   useEffect(() => {
     scrollOnMount();
+    loadCaptchaEnginge(6);
   }, []);
+
+  const handleLoginForm = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const userCaptcha = form.captcha.value;
+
+    if (validateCaptcha(userCaptcha) === true) {
+      alert("Captcha Matched");
+      return;
+    } else {
+      alert("Captcha do not match");
+    }
+  };
 
   return (
     <div>
@@ -17,11 +40,9 @@ const Login = () => {
             <img src={loginImg} alt="" />
           </div>
           <div className="flex-1 w-full bg-base-100 mx-auto ">
-            <h1 className="text-2xl font-bold text-center mb-8">
-              Login
-            </h1>
+            <h1 className="text-2xl font-bold text-center mb-8">Login</h1>
             <hr />
-            <form className="mt-5">
+            <form onSubmit={handleLoginForm} className="mt-5">
               <div>
                 <label className="label">
                   <strong className="label-text">Email address</strong>
@@ -65,10 +86,30 @@ const Login = () => {
                   {/* )} */}
                 </div>
               </div>
-              <div className="form-control my-5">
-                <button className="btn w-full rounded-lg hover:bg-black text-white bg-[#2B3440]">
-                  Log in
+
+              {/* Captcha */}
+              <div className="py-3">
+                <button>
+                  <LoadCanvasTemplateNoReload />
                 </button>
+              </div>
+
+              <div>
+                <input
+                  type="text"
+                  name="captcha"
+                  placeholder="Type here"
+                  className="focus:outline-none input w-full rounded-lg outline-none bg-[#f3f3f3]"
+                  required
+                />
+              </div>
+
+              <div className="my-5">
+                <input
+                  type="submit"
+                  value="Login"
+                  className="btn btn-info w-full"
+                />
               </div>
             </form>
             <div>
