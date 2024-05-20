@@ -1,11 +1,13 @@
 import logo from "../../assets/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 const Navbar = () => {
   const { user, logOutUser } = useAuth();
+  const navigate = useNavigate();
 
   const links = (
     <>
@@ -30,7 +32,8 @@ const Navbar = () => {
   const handleLogOutUser = async () => {
     try {
       await logOutUser();
-      alert("Logout success");
+      toast.success("Logout success");
+      navigate("/");
     } catch (error) {
       console.error(error.message);
     }
@@ -38,8 +41,8 @@ const Navbar = () => {
 
   return (
     <nav className="  text-white uppercase sticky top-0 z-50 bg-neutral">
-      <div className="navbar">
-        <div className="navbar-start">
+      <div className="navbar flex justify-between">
+        <div className="">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -68,7 +71,7 @@ const Navbar = () => {
             <img className="max-w-44" src={logo} alt="Logo" />
           </Link>
         </div>
-        <div className="navbar-end space-x-7">
+        <div className="space-x-7">
           <div className="hidden lg:flex ">
             <ul className="menu menu-horizontal px-1">{links}</ul>
           </div>

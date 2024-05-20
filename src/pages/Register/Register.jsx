@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import scrollOnMount from "./../../utilities/scrollOnMount";
 import regImg from "../../assets/login/login.svg";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const { createUser } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     scrollOnMount();
@@ -18,10 +20,11 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     try {
-      const res = await createUser(email, password);
-      console.log(res.user);
+      await createUser(email, password);
+      toast.success("Registration Success");
+      navigate("/");
     } catch (error) {
-      console.error(error.message);
+      toast.error(error.message);
     }
   };
 
