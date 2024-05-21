@@ -11,6 +11,7 @@ import MyCart from "./../pages/Dashboard/MyCart/MyCart";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import NotFoundPage from "./../pages/NotFoundPage/NotFoundPage";
 import ContactPage from "../pages/ContactPage/ContactPage";
+import AddReview from './../pages/Dashboard/AddReview/AddReview';
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -58,6 +59,10 @@ const routes = createBrowserRouter([
       {
         path: "/dashboard/my-cart",
         element: <MyCart />,
+      },
+      {
+        path: "/dashboard/add-review",
+        element: <AddReview />,
       },
     ],
   },
