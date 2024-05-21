@@ -44,7 +44,7 @@ const Navbar = () => {
 
   return (
     <nav className="  text-white uppercase sticky top-0 z-50 bg-neutral">
-      <div className="navbar flex justify-between">
+      <div className="navbar container mx-auto flex justify-between">
         <div className="">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

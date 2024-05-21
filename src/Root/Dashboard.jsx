@@ -7,6 +7,10 @@ import { FaCartPlus } from "react-icons/fa";
 import { MdOutlineReviews } from "react-icons/md";
 import { TbBrandBooking } from "react-icons/tb";
 import { Link, NavLink } from "react-router-dom";
+import { FiMenu } from "react-icons/fi";
+import { GiShoppingBag } from "react-icons/gi";
+import { IoMail } from "react-icons/io5";
+
 const Dashboard = () => {
   const lists = [
     {
@@ -46,8 +50,35 @@ const Dashboard = () => {
       name: "My Booking",
     },
   ];
+  const lists2 = [
+    {
+      id: 1,
+      link: "/",
+      icon: <IoHomeOutline />,
+      name: "Home",
+    },
+    {
+      id: 2,
+      link: "/our-menu",
+      icon: <FiMenu />,
+      name: "Menu",
+    },
+    {
+      id: 3,
+      link: "/our-shop",
+      icon: <GiShoppingBag />,
+      name: "Shop",
+    },
+    {
+      id: 4,
+      link: "/contact",
+      icon: <IoMail />,
+      name: "Contact",
+    },
+  ];
 
-  const items = lists.map((list) => (
+const generateItems = (array)=>{
+  const items = array.map((list) => (
     <li key={list.id}>
       <NavLink
         to={list.link}
@@ -58,17 +89,19 @@ const Dashboard = () => {
       </NavLink>
     </li>
   ));
+  return items;
+}
 
   return (
     <div className="flex gap-6 container mx-auto px-4">
-      <aside className="w-64 min-h-[90vh] bg-[#D1A054] p-7">
+      <aside className="w-64 min-h-screen bg-[#D1A054] p-7">
         <Link to='/'>
           <img src={logo} alt="" />
         </Link>
         <div className="mt-16">
-          <ul className="mb-7 dashboard-menu flex flex-col gap-3 text-lg">{items}</ul>
+          <ul className="mb-7 dashboard-menu flex flex-col gap-3 text-lg">{generateItems(lists)}</ul>
           <hr />
-          {/* <ul className="mt-7 flex flex-col gap-3 text-lg">{items}</ul> */}
+          <ul className="mt-7 flex flex-col gap-3 text-lg">{generateItems(lists2)}</ul>
         </div>
       </aside>
       <div className="flex-1">
