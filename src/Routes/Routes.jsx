@@ -9,15 +9,21 @@ import PrivateRoutes from "./PrivateRoutes";
 import Dashboard from "./../Root/Dashboard";
 import MyCart from "./../pages/Dashboard/MyCart/MyCart";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import NotFoundPage from "./../pages/NotFoundPage/NotFoundPage";
+import ContactPage from "../pages/ContactPage/ContactPage";
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <h2>Error: 404</h2>,
+    errorElement: <NotFoundPage />,
     children: [
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
       },
       {
         path: "/our-menu",

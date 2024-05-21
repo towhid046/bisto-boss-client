@@ -1,8 +1,12 @@
 import { MdPayment } from "react-icons/md";
 import { IoHomeOutline } from "react-icons/io5";
 import { FiPhoneCall } from "react-icons/fi";
+import useAuth from "../../../hooks/useAuth";
 
 const UserHome = () => {
+
+  const {user} = useAuth();
+
   const lists = [
     {
       id: 1,
@@ -47,11 +51,11 @@ const UserHome = () => {
       <h2 className="text-2xl font-semibold my-7">Hi, Welcome Back</h2>
       <div className="flex gap-5 justify-between flex-wrap">{items}</div>
       <div className="flex lg:flex-row flex-col">
-        <div className="flex-1 text-center bg-orange-100 flex justify-center items-center flex-col border-r-[#d4a358] border-2 border-orange-100">
-          <div className=" bg-base-100 border h-30 w-30 btn btn-circle  border-[#d4a358] btn-lg ">
-            User Profile
+        <div className="flex-1 text-center bg-orange-100 flex justify-center py-8 items-center flex-col border-r-[#d4a358] border-2 border-orange-100">
+          <div>
+            <img src={user?.photoURL} className="border-2 border-[#d4a358]   w-32 h-32 rounded-full" alt="" />
           </div>
-          <h2 className="text-2xl text-center font-semibold mt-5">User Name</h2>
+          <h2 className="text-2xl text-center font-semibold mt-5">{user?.displayName}</h2>
         </div>
         <div className="flex-1 p-10 bg-orange-200">
           <h2 className="uppercase mb-7 font-semibold text-2xl ">
