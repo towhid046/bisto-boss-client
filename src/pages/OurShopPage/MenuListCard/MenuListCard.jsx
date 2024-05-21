@@ -43,7 +43,7 @@ const MenuListCard = ({ menu }) => {
     } else {
       swal({
         title: "You are not Logged In",
-        text: "Please login to add to the cart",
+        text: "Please login to add item to the Cart",
         icon: "info",
         buttons: true,
       }).then((willDelete) => {

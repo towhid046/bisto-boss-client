@@ -10,8 +10,10 @@ import { Link, NavLink } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { GiShoppingBag } from "react-icons/gi";
 import { IoMail } from "react-icons/io5";
+import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
+  const {carts} = useCart()
   const lists = [
     {
       id: 11,
@@ -36,6 +38,7 @@ const Dashboard = () => {
       link: "/dashboard/my-cart",
       icon: <FaCartPlus />,
       name: "My Cart",
+      items:` (${carts.length})`,
     },
     {
       id: 15,
@@ -85,7 +88,7 @@ const generateItems = (array)=>{
         className="flex items-center gap-2 uppercase text-black"
       >
         {list.icon}
-        {list.name}
+        {list.name}{list.items || ''}
       </NavLink>
     </li>
   ));

@@ -39,15 +39,19 @@ const routes = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoutes>
+        <Dashboard />
+      </PrivateRoutes>
+    ),
     children: [
-      {
-        path: "/dashboard/my-cart",
-        element: <MyCart />,
-      },
       {
         path: "/dashboard/user-home",
         element: <UserHome />,
+      },
+      {
+        path: "/dashboard/my-cart",
+        element: <MyCart />,
       },
     ],
   },
