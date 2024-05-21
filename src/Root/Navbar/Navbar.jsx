@@ -8,9 +8,9 @@ import { toast } from "react-toastify";
 import useCart from "./../../hooks/useCart";
 
 const Navbar = () => {
-  const { user, logOutUser, } = useAuth();
+  const { user, logOutUser } = useAuth();
   const navigate = useNavigate();
-  const {carts} = useCart();
+  const { carts } = useCart();
 
   const links = (
     <>
@@ -41,7 +41,6 @@ const Navbar = () => {
       console.error(error.message);
     }
   };
-
 
   return (
     <nav className="  text-white uppercase sticky top-0 z-50 bg-neutral">
@@ -80,7 +79,7 @@ const Navbar = () => {
             <ul className="menu menu-horizontal px-1">{links}</ul>
           </div>
           <div className="relative">
-            <Link to={"/cart"}>
+            <Link to={"/dashboard/my-cart"}>
               <FaCartPlus className="text-xl" />
               <span className="badge badge-primary absolute -top-3 left-3">
                 {carts.length}

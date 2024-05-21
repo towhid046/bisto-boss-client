@@ -12,7 +12,7 @@ const OurShopPage = () => {
 
   return (
     <div>
-      <PageHelmet title="Our Menu" />
+      <PageHelmet title="Our Shop" />
       <PageBanner
         img={img}
         title="Our Shop"

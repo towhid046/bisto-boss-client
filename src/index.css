@@ -12,7 +12,10 @@
     top: 144%;
 }
 
-.menu > li .active{
+.menu > li a.active{
     color: rgb(202, 202, 52) !important;
     font-weight: 600;
+}
+.dashboard-menu > li > a.active{
+    color:white !important;
 }

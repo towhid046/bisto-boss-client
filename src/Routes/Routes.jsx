@@ -5,8 +5,10 @@ import MenuPage from "./../pages/MenuPage/MenuPage";
 import OurShopPage from "../pages/OurShopPage/OurShopPage";
 import Register from "./../pages/Register/Register";
 import Login from "./../pages/Login/Login";
-import Cart from "./../pages/Cart/Cart";
 import PrivateRoutes from "./PrivateRoutes";
+import Dashboard from "./../Root/Dashboard";
+import MyCart from "./../pages/Dashboard/MyCart/MyCart";
+import UserHome from "../pages/Dashboard/UserHome/UserHome";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -33,13 +35,19 @@ const routes = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    children: [
       {
-        path: "/cart",
-        element: (
-          <PrivateRoutes>
-            <Cart />
-          </PrivateRoutes>
-        ),
+        path: "/dashboard/my-cart",
+        element: <MyCart />,
+      },
+      {
+        path: "/dashboard/user-home",
+        element: <UserHome />,
       },
     ],
   },
