@@ -5,10 +5,12 @@ import scrollOnMount from "./../../utilities/scrollOnMount";
 import regImg from "../../assets/login/login.svg";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
+import userAxiosPublic from "../../hooks/userAxiosPublic";
 
 const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
+  const axiosPublic = userAxiosPublic();
 
   useEffect(() => {
     scrollOnMount();
@@ -21,11 +23,16 @@ const Register = () => {
     const password = form.password.value;
     const userName = form.name.value;
     const photoUrl = form.photoUrl.value;
+
+    const user = { name: userName, email };
     try {
       await createUser(email, password);
-      toast.success("Registration Success");
-      navigate("/");
-      await updateUserProfile(userName, photoUrl);
+      const res = await axiosPublic.post("/users", user);
+      if (res.data.insertedId) {
+        toast.success("Registration Success");
+        navigate("/");
+        await updateUserProfile(userName, photoUrl);
+      }
     } catch (error) {
       toast.error(error.message);
     }
