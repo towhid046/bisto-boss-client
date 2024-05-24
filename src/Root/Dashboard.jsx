@@ -14,11 +14,12 @@ import { FaListUl } from "react-icons/fa";
 import { FaBook, FaUsers, FaUtensils } from "react-icons/fa6";
 
 import useCart from "../hooks/useCart";
-import { useState } from "react";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const { carts } = useCart();
-  const [isAdmin, setIsAdmin] = useState(true);
+  const {isAdmin} = useAdmin();
+  console.log(isAdmin)
 
   const lists = [
     {

@@ -52,6 +52,7 @@ const Login = () => {
 
       //  send user data to server:
       await axiosPublic.post("/users", user);
+      navigate(from);
     } catch (error) {
       console.error(error.message);
     }
