@@ -12,6 +12,7 @@ import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import NotFoundPage from "./../pages/NotFoundPage/NotFoundPage";
 import ContactPage from "../pages/ContactPage/ContactPage";
 import AddReview from './../pages/Dashboard/AddReview/AddReview';
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -64,6 +65,13 @@ const routes = createBrowserRouter([
         path: "/dashboard/add-review",
         element: <AddReview />,
       },
+
+      // admin related routes:
+      {
+        path: "/dashboard/all-users",
+        element: <AllUsers />,
+      },
+
     ],
   },
 ]);
