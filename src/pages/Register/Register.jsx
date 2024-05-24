@@ -6,9 +6,10 @@ import regImg from "../../assets/login/login.svg";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import userAxiosPublic from "../../hooks/userAxiosPublic";
+import { FaGoogle } from "react-icons/fa";
 
 const Register = () => {
-  const { createUser, updateUserProfile } = useAuth();
+  const { createUser, updateUserProfile, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
   const axiosPublic = userAxiosPublic();
 
@@ -35,6 +36,17 @@ const Register = () => {
       }
     } catch (error) {
       toast.error(error.message);
+    }
+  };
+
+  const handleSignUpWithGoogle = async () => {
+    try {
+      const res = await loginWithGoogle();
+      // send user data to server:
+      const user = { name: res.user?.displayName, email: res.user?.email };
+      await axiosPublic.post("/users", user);
+    } catch (error) {
+      console.error(error.message);
     }
   };
 
@@ -131,6 +143,21 @@ const Register = () => {
                 </button>
               </div>
             </form>
+            <div>
+              <div className="text-center mb-4 mt-8">
+                <h2 className="text-2xl">Or</h2>
+                <p>Sign Up </p>
+              </div>
+              <div className="w-full">
+                <button
+                  onClick={handleSignUpWithGoogle}
+                  className="btn flex items-center gap-5 w-full"
+                >
+                  <FaGoogle className="text-2xl text-success" />
+                  <span>With Google</span>
+                </button>
+              </div>
+            </div>
             <p className="text-center mt-5">
               Already have an account?{" "}
               <Link

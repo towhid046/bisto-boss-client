@@ -1,15 +1,11 @@
-import {
-  Link,
-  useLoaderData,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import scrollOnMount from "./../../utilities/scrollOnMount";
 import loginImg from "../../assets/login/login.svg";
 import useAuth from "./../../hooks/useAuth";
 import { toast } from "react-toastify";
+import { FaGoogle } from "react-icons/fa";
 
 import {
   loadCaptchaEnginge,
@@ -17,10 +13,12 @@ import {
   LoadCanvasTemplateNoReload,
   validateCaptcha,
 } from "react-simple-captcha";
+import userAxiosPublic from "../../hooks/userAxiosPublic";
 
 const Login = () => {
-  const { loginUser } = useAuth();
+  const { loginUser, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
+  const axiosPublic = userAxiosPublic();
 
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -44,6 +42,18 @@ const Login = () => {
       return;
     } else {
       toast.error("Captcha do not match");
+    }
+  };
+
+  const handelLogInWithGoogle = async () => {
+    try {
+      const res = await loginWithGoogle();
+      const user = { name: res.user.displayName, email: res.user.email };
+
+      //  send user data to server:
+      await axiosPublic.post("/users", user);
+    } catch (error) {
+      console.error(error.message);
     }
   };
 
@@ -132,18 +142,14 @@ const Login = () => {
                 <h2 className="text-2xl">Or</h2>
                 <p>Log In</p>
               </div>
-              <div className="flex justify-center gap-5">
+              <div className="w-full">
                 <button
-                  //   onClick={handelLogInWithGoogle}
-                  className="btn flex items-center gap-2"
+                  onClick={handelLogInWithGoogle}
+                  className="btn flex items-center gap-5 w-full"
                 >
+                  <FaGoogle className="text-2xl text-success" />
+
                   <span>With Google</span>
-                </button>
-                <button
-                  //   onClick={handelLogInWithGithub}
-                  className="btn flex items-center gap-2"
-                >
-                  <span>With GitHub</span>
                 </button>
               </div>
             </div>
