@@ -19,7 +19,6 @@ import useAdmin from "../hooks/useAdmin";
 const Dashboard = () => {
   const { carts } = useCart();
   const {isAdmin} = useAdmin();
-  console.log(isAdmin)
 
   const lists = [
     {

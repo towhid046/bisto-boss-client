@@ -35,7 +35,7 @@ const useAxiosSecure = () => {
         navigate("/login");
       }
 
-      console.log("Status ERROR: ", error.response?.status);
+      // console.log("Status ERROR: ", error.response?.status);
       return Promise.reject(error);
     }
   );

@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
       const user = { email: currentUser?.email };
       if (currentUser) {
-        // generate token
+        // generate token:
         const generateToken = async () => {
           const { data } = await axiosPublic.post("/jwt", user);
           if (data.token) {
