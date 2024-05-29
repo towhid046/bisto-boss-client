@@ -96,13 +96,13 @@ const Dashboard = () => {
     },
     {
       id: 12,
-      link: "/dashboard/add-items",
+      link: "/dashboard/add-item",
       icon: <FaUtensils />,
       name: "Add Items",
     },
     {
       id: 13,
-      link: "/dashboard/manage-item",
+      link: "/dashboard/manage-items",
       icon: <FaListUl />,
       name: "Manage Items",
     },
