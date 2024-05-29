@@ -6,11 +6,13 @@ import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import useCart from "./../../hooks/useCart";
+import useAdmin from './../../hooks/useAdmin';
 
 const Navbar = () => {
   const { user, logOutUser } = useAuth();
   const navigate = useNavigate();
   const { carts } = useCart();
+  const {isAdmin} = useAdmin();
 
   const links = (
     <>
@@ -79,7 +81,7 @@ const Navbar = () => {
             <ul className="menu menu-horizontal px-1">{links}</ul>
           </div>
           <div className="relative">
-            <Link to={"/dashboard/my-cart"}>
+            <Link to={`/dashboard/${isAdmin ? 'all-users':'my-cart'}`}>
               <FaCartPlus className="text-xl" />
               <span className="badge badge-primary absolute -top-3 left-3">
                 {carts.length}

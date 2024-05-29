@@ -102,7 +102,7 @@ const Dashboard = () => {
     },
     {
       id: 13,
-      link: "/dashboard/manage-items",
+      link: "/dashboard/manage-item",
       icon: <FaListUl />,
       name: "Manage Items",
     },
