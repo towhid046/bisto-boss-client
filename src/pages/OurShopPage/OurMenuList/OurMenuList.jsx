@@ -12,6 +12,7 @@ const OurMenuList = ({ category }) => {
         const res = await fetch(`${import.meta.env.VITE_URL}/menu/${category}`);
         const data = await res.json();
         setMenus(data);
+        console.log(data)
       } catch (error) {
         setError(error.message);
       } finally {

@@ -15,6 +15,7 @@ import AddReview from "./../pages/Dashboard/AddReview/AddReview";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import AddItem from "./../pages/Dashboard/AddItem/AddItem";
 import Payment from './../pages/Dashboard/Payment/Payment';
+import ManageItems from './../pages/Dashboard/ManageItem/ManageItem';
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -80,6 +81,10 @@ const routes = createBrowserRouter([
       {
         path: "/dashboard/add-item",
         element: <AddItem />,
+      },
+      {
+        path: "/dashboard/manage-items",
+        element: <ManageItems />,
       },
       
     ],
