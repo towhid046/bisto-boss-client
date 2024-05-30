@@ -14,6 +14,7 @@ import ContactPage from "../pages/ContactPage/ContactPage";
 import AddReview from "./../pages/Dashboard/AddReview/AddReview";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import AddItem from "./../pages/Dashboard/AddItem/AddItem";
+import Payment from './../pages/Dashboard/Payment/Payment';
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -66,6 +67,10 @@ const routes = createBrowserRouter([
         path: "/dashboard/add-review",
         element: <AddReview />,
       },
+      {
+        path: "/dashboard/payment",
+        element: <Payment />,
+      },
 
       // admin related routes:
       {
@@ -76,6 +81,7 @@ const routes = createBrowserRouter([
         path: "/dashboard/add-item",
         element: <AddItem />,
       },
+      
     ],
   },
 ]);

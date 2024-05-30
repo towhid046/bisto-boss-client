@@ -29,7 +29,7 @@ const Dashboard = () => {
     },
     {
       id: 12,
-      link: "/dashboard/reservation",
+      link: "/dashboard/payment",
       icon: <SlCalender />,
       name: "Reservation",
     },
