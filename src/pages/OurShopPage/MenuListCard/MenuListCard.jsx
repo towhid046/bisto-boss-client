@@ -29,10 +29,9 @@ const MenuListCard = ({ menu }) => {
       newItem.price = item.price;
 
       try {
-        const res = await axiosSecure.post("/carts", { newItem });
-        console.log(res.data);
+        await axiosSecure.post("/carts", { newItem });
         toast.success(`${item.name} is added to cart`, {
-          position: 'top-center',
+          position: "top-center",
           autoClose: 2000,
         });
         refetch();

@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { auth, googleProvider } from "./../../config/firebase";
 import PropTypes from "prop-types";
-import userAxiosPublic from "./../../hooks/userAxiosPublic";
+import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const axiosPublic = userAxiosPublic();
+  const axiosPublic = useAxiosPublic();
 
   const createUser = (email, password) => {
     setLoading(true);

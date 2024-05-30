@@ -13,12 +13,12 @@ import {
   LoadCanvasTemplateNoReload,
   validateCaptcha,
 } from "react-simple-captcha";
-import userAxiosPublic from "../../hooks/userAxiosPublic";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Login = () => {
   const { loginUser, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
-  const axiosPublic = userAxiosPublic();
+  const axiosPublic = useAxiosPublic();
 
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";

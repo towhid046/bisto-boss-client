@@ -5,13 +5,13 @@ import scrollOnMount from "./../../utilities/scrollOnMount";
 import regImg from "../../assets/login/login.svg";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
-import userAxiosPublic from "../../hooks/userAxiosPublic";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { FaGoogle } from "react-icons/fa";
 
 const Register = () => {
   const { createUser, updateUserProfile, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
-  const axiosPublic = userAxiosPublic();
+  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
     scrollOnMount();

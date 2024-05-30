@@ -3,22 +3,39 @@ import { FaUtensils } from "react-icons/fa6";
 import { useForm } from "react-hook-form";
 
 const imgbb_api_key = import.meta.env.VITE_IMGBB_API_KEY;
-import userAxiosPublic from "./../../../hooks/userAxiosPublic";
+import useAxiosPublic from "./../../../hooks/useAxiosPublic";
+import useAxiosSecure from "./../../../hooks/useAxiosSecure";
+import swal from "sweetalert";
 
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${imgbb_api_key}`;
 
 const AddItem = () => {
-  const axiosPublic = userAxiosPublic();
+  const { register, handleSubmit, reset } = useForm();
+  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
-  const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
     const imageFile = { image: data.image[0] };
 
     const res = await axiosPublic.post(img_hosting_api, imageFile, {
       headers: { "content-type": "multipart/form-data" },
     });
+
     const imgUrl = res.data?.data.display_url;
-    console.log(imgUrl)
+
+    const item = {
+      name: data?.name,
+      recipe: data?.recipe,
+      image: imgUrl,
+      category: data?.category,
+      price: data?.price,
+    };
+
+    const result = await axiosSecure.post("/add-menu", item);
+    if (result?.data?.insertedId) {
+      reset();
+      swal("Added", "Item is added to the menu", "success");
+    }
   };
 
   return (
@@ -56,7 +73,7 @@ const AddItem = () => {
                   <option value={"pizza"}>Pizza</option>
                   <option value={"soup"}>Soup</option>
                   <option value={"dessert"}>Dessert</option>
-                  <option value={"drink"}>Drink</option>
+                  <option value={"drinks"}>Drink</option>
                 </select>
               </div>
               <div className="flex-1">
