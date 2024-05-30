@@ -9,7 +9,7 @@ const MenuItems = ({ menuCategory }) => {
     const loadData = async () => {
       try {
         const res = await fetch(
-          `${import.meta.env.VITE_URL}/menu/${menuCategory}`
+          `${import.meta.env.VITE_URL}/menu-category?category=${menuCategory}`
         );
         const data = await res.json();
         setMenus(data);

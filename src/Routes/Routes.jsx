@@ -14,8 +14,9 @@ import ContactPage from "../pages/ContactPage/ContactPage";
 import AddReview from "./../pages/Dashboard/AddReview/AddReview";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import AddItem from "./../pages/Dashboard/AddItem/AddItem";
-import Payment from './../pages/Dashboard/Payment/Payment';
-import ManageItems from './../pages/Dashboard/ManageItem/ManageItem';
+import Payment from "./../pages/Dashboard/Payment/Payment";
+import ManageItems from "./../pages/Dashboard/ManageItem/ManageItem";
+import UpdateItem from "./../pages/Dashboard/UpdateItem/UpdateItem";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -86,7 +87,12 @@ const routes = createBrowserRouter([
         path: "/dashboard/manage-items",
         element: <ManageItems />,
       },
-      
+      {
+        path: "/dashboard/update-item/:id",
+        loader: async ({ params }) =>
+          fetch(`${import.meta.env.VITE_URL}/menu/${params.id}`),
+        element: <UpdateItem />,
+      },
     ],
   },
 ]);

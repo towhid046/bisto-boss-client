@@ -91,12 +91,14 @@ const ManageItems = () => {
                   <td>{cart.name}</td>
                   <td>{cart.price}</td>
                   <td>
+                    <Link to={`/dashboard/update-item/${cart._id}`}>
                     <button
                       // onClick={() => handleMakeAdmin(user._id)}
                       className="text-lg btn bg-[#d4a358] text-base-100 hover:bg-[#d4a359] "
                     >
                       <FaPenToSquare />
                     </button>
+                    </Link>
                   </td>
                   <td>
                     <button

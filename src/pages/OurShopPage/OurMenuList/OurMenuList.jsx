@@ -9,10 +9,9 @@ const OurMenuList = ({ category }) => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_URL}/menu/${category}`);
+        const res = await fetch(`${import.meta.env.VITE_URL}/menu-category?category=${category}`);
         const data = await res.json();
         setMenus(data);
-        console.log(data)
       } catch (error) {
         setError(error.message);
       } finally {
